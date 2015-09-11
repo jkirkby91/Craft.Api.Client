@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "apiClient\\Exceptions\\": "exceptions/",
+      "apiClient\\Utilities\\": "utilities/"
+    }
+  }
+}
