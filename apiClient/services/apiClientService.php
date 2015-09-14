@@ -156,6 +156,26 @@
 			return $this->_http_parse_message(curl_exec($this->curl));
 		}
 
+    /**
+     * Preforms a patch request on server
+     * @param $payload
+     *
+     * @return array
+     *
+     * @throws HttpServerException
+     * @throws HttpServerException404
+     * @throws RestClientException
+     */
+     public function patch($payload)
+     {
+        $this->setOpts($curl_options = [
+                CURLOPT_CUSTOMREQUEST => 'PATCH',
+                CURLOPT_POSTFIELDS => $payload
+            ]);
+
+        return $this->_http_parse_message(curl_exec($this->curl));
+     }
+
 		/**
 		 * sets curl options
 		 * @param array $curl_options
