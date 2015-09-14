@@ -1,6 +1,7 @@
 <?php
 
-	namespace apiClient\exceptions;
+
+	namespace apiClient\Exceptions;
 
 	/**
 	 * Class HttpServerException404

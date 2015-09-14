@@ -1,4 +1,5 @@
 <?php
+
 	namespace Craft;
 
 	/**
@@ -37,6 +38,6 @@
 
 		public function hasCpSection()
 		{
-			return false;
+			return true;
 		}
 	}

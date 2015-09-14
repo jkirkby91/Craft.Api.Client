@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'apiClient\\Exceptions\\HttpServerException' => $baseDir . '/exceptions/HttpServerException.php',
+    'apiClient\\Exceptions\\HttpServerException404' => $baseDir . '/exceptions/HttpServerException404.php',
     'apiClient\\Exceptions\\RestClientException' => $baseDir . '/exceptions/RestClientException.php',
     'apiClient\\Utilities\\apiLog' => $baseDir . '/utilities/apiLog.php',
 );

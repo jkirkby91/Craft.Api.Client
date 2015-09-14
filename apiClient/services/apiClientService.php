@@ -1,6 +1,7 @@
 <?php
 
 	namespace Craft;
+
 	use apiClient\Utilities\apiLog;
 	use apiClient\Exceptions\HttpServerException;
 	use apiClient\Exceptions\HttpServerException404;
@@ -11,11 +12,10 @@
 	 * @package Craft
 	 * @author james@smackagency.com
 	 */
-
 	class apiClientService extends BaseApplicationComponent
 	{
 		public $curl;
-		public $http_options;
+		public $curl_options;
 		public $response_object;
 		public $response_info;
 
@@ -158,13 +158,13 @@
 
 		/**
 		 * sets curl options
-		 * @param array $http_options
+		 * @param array $curl_options
 		 * @return bool
 		 * @throws RestClientException
 		 */
-		public function setOpts(array $http_options)
+		public function setOpts(array $curl_options)
 		{
-			if (!curl_setopt_array($this->curl, $http_options)) {
+			if (!curl_setopt_array($this->curl, $curl_options)) {
 				$exception = new RestClientException("Error setting cURL request options.");
 				$this->apiLog->logEvent($exception, $severity = E_ERROR, $force = true, $category = self::CURlOPTS,
 					$plugin = $this->invoker);
@@ -202,7 +202,7 @@
 				$this->apiLog->logEvent($exception, $severity = E_ERROR, $force = true, $category = self::CONNECTION,
 					$plugin = $this->invoker);
 				throw $exception;
-			} elseif (!in_array($code, range(200, 207))) {
+			} elseif (!in_array($code, range(200, 207), true)) {
 				$exception = new HttpServerException('Server response status was: ' . $code .
 					' with response: [' . $api_response . ']', $code);
 				$this->apiLog->logEvent($exception, $severity = E_ERROR, $force = true, $category = self::GENERIC,
